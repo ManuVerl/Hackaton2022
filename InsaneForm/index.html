@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>! Insane Form !</title>
+	<link rel="icon" href="./favicon.png">
+
+    <link rel="stylesheet" href="./js/jquery-ui-1.13.2.custom/jquery-ui.min.css">
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script src="./js/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
+
+	<style>
+	body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+
+	#form-cancel
+	{
+		border: 1px solid #6c8844;
+		background-color: #c6ff77;
+		background-image: -webkit-gradient(linear,left top,left bottom,from(#86db52),to(#527c44));
+		background-image: -webkit-linear-gradient(top,#86db52,#527c44);
+		background-image: -moz-linear-gradient(top,#86db52,#527c44);
+		background-image: -ms-linear-gradient(top,#86db52,#527c44);
+		background-image: -o-linear-gradient(top,#86db52,#527c44);
+		background-image: linear-gradient(top,#86db52,#527c44);
+	}
+	#form-maybe
+	{
+		border: 1px solid #9b6b2d93;
+		background-color: #ffb04893;
+		background-image: -webkit-gradient(linear,left top,left bottom,from(#ffd39a93),to(#fd8f0093));
+		background-image: -webkit-linear-gradient(top,#ffd39a93,#fd8f0093);
+		background-image: -moz-linear-gradient(top,#ffd39a93,#fd8f0093);
+		background-image: -ms-linear-gradient(top,#ffd39a93,#fd8f0093);
+		background-image: -o-linear-gradient(top,#ffd39a93,#fd8f0093);
+		background-image: linear-gradient(top,#ffd39a93,#fd8f0093);
+	}
+	#form-submit
+	{
+		border: 1px solid #a85965;
+		background-color: #ff8799;
+		background-image: -webkit-gradient(linear,left top,left bottom,from(#ffcbd3),to(#fa1538));
+		background-image: -webkit-linear-gradient(top,#ffcbd3,#fa1538);
+		background-image: -moz-linear-gradient(top,#ffcbd3,#fa1538);
+		background-image: -ms-linear-gradient(top,#ffcbd3,#fa1538);
+		background-image: -o-linear-gradient(top,#ffcbd3,#fa1538);
+		background-image: linear-gradient(top,#ffcbd3,#fa1538);		
+	}
+
+	/* Standard syntax */
+	@keyframes shake {
+	10%, 90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%, 80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%, 60% {
+		transform: translate3d(4px, 0, 0);
+	}
+	}
+
+	.apply-shake {
+		animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+	}
+	</style>
+</head>
+<body>
+
+<h1>! Insane Form !</h1>
+
+<div id="headForm" class="ui-widget">
+	<p>Essayes d'arriver au bout du formulaire ... Bon courage !</p>
+</div>
+<div id="startupForm" class="ui-widget">
+	<img src="./assets/gfx/insane.gif" />
+	<br />
+	montez le volume ...
+	<br />
+	<br />
+	<button id="form-start" class="ui-button ui-corner-all ui-widget">Démarrer</button>
+</div>
+<div id="successForm" style="visibility: hidden">
+	<img src="./assets/gfx/funny-celebrate-56.gif" />
+	<br />
+	<div class="ui-widget">
+		<p><i>Félicitations !!!! Vous êtes un semi-dieu des formulaires !</i></p>
+	</div>	
+</div>
+<div id="mainForm" style="visibility: hidden">
+
+	<!-- Accordion -->
+	<div id="accordion">
+		<h3>Prénom</h3>
+		<div>
+			<input type="text" name="text-1" id="text-1">
+			<button class="ui-state-default" name="button-help"><span class="ui-icon ui-icon-transferthick-e-w" title="ésrevni reivalC"></span></button>
+			<p>
+				<span>P O I U Y T R E Z A</span><br>
+				<span>M L K J H G F D S Q</span><br>
+				<span>N B V C X W</span>
+			</p>
+		</div>
+		<h3>Nom</h3>
+		<div>
+			<input type="text" name="text-2" id="text-2">
+			<button class="ui-state-default" name="button-help"><span class="ui-icon ui-icon-shuffle" title="Clavier chamboulé"></span></button>
+			<p>
+				<span id="kbLine1">A Z E R T Y U I O P</span><br>
+				<span id="kbLine2">Q S D F G H J K L M</span><br>
+				<span id="kbLine3">W X C V B N</span>
+			</p>
+		</div>
+		<h3>Adresse mail</h3>
+		<div>
+			<input type="text" name="text-email" id="text-email"><br/>
+			<input type="text" name="text-3" id="text-3" style="margin-top:10px; visibility: hidden">
+			<button class="ui-state-default" name="button-help3" id="button-help3" style="visibility: hidden"><span class="ui-icon ui-icon-notice" title="Attention aux tremblements de terre !"></span></button>
+		</div>
+		<h3>Date de naissance</h3>
+		<div style="height: 500px">
+			<table>
+			<tr><td>Jour</td><td><input type="text" name="text-jour" id="text-jour" style="width: 50px"></td></tr>
+			<tr><td>Mois</td><td><input type="text" name="text-mois" id="text-mois" style="width: 50px"></td></tr>
+			<tr><td>Année</td><td><input type="text" name="text-annee" id="text-annee" style="width: 100px"></td></tr>
+			</table>
+		</div>
+		<h3>Mot de passe</h3>
+		<div>
+			<input type="password" name="text-password" id="text-password"><br/>
+			<input type="password" name="text-confirm" id="text-confirm" style="margin-top:10px">
+			<button class="ui-state-default" name="button-help4" id="button-help4"><span class="ui-icon ui-icon-star" title="Confirmez la saisie ..."></span></button>
+		</div>
+	</div>
+
+	<div class="ui-widget">
+		<p><i>Appuyer sur Entrée pour passer au champ suivant ...</i></p>
+	</div>
+
+	<div id="formMessage" style="visibility: hidden">
+		<p style="color:#fa1538" id="ui-message">...</p>
+	</div>
+
+	<div id="formButtons" style="padding-top: 20px; visibility: hidden">
+		<button id="form-cancel" class="ui-button ui-corner-all ui-widget">
+			<span class="ui-icon ui-icon-closethick"></span>Annuler
+		</button>
+		<button id="form-maybe" class="ui-button ui-corner-all ui-widget">
+			<span class="ui-icon ui-icon-lightbulb"></span>Y'a un piège ?
+		</button>
+		<button id="form-submit" class="ui-button ui-corner-all ui-widget">
+			<span class="ui-icon ui-icon-circle-check"></span>Valider
+		</button>
+	</div>
+
+</div>
+
+<script>
+
+var audioCtx, audioTrack;
+var earthquakeCount = 0;
+
+$("#accordion").accordion();
+$("#accordion").accordion({ event: "none" });
+
+$(".ui-icon-help").tooltip();
+
+$(".button-help").hover(
+	function() {
+		$(this).addClass( "ui-state-hover" );
+	},
+	function() {
+		$(this).removeClass( "ui-state-hover" );
+	}
+);
+
+//$(".ui-button").prop("disabled", true);
+
+$("#form-start").button();
+
+$('#text-jour').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13' && checkInput('#text-jour')) {
+	$( function() { $( "#text-mois" ).focus(); } );
+  }
+});
+
+$('#text-mois').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13' && checkInput('#text-mois')) {
+	$( function() { $( "#text-annee" ).focus(); } );
+  }
+});
+
+$('#text-annee').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13' && checkInput('#text-annee') && checkInput('#text-mois') && checkInput('#text-jour')) {
+	$("#ui-message").html("");
+	
+	// switch sur mot de passe
+	$("#accordion").accordion("option", {active: 4});
+	$( function() { $( "#text-password" ).focus(); } );
+
+	audioTrack.pause();	
+	audioTrack = new Audio('./assets/sfx/turrican2.mp3');
+    audioTrack.play();	
+  }
+});
+
+$('#text-1').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13' && checkInput('#text-1')) {
+	$("#ui-message").html("");
+
+	// switch sur nom
+    $("#accordion").accordion("option", {active: 1});
+	$( function() { $( "#text-2" ).focus(); } );
+
+	audioTrack.pause();	
+	audioTrack = new Audio('./assets/sfx/robocod.mp3');
+    audioTrack.play();
+  }
+});
+
+$('#text-2').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13' && checkInput('#text-2')){
+	$("#ui-message").html("");
+
+	// switch sur adresse email
+    $("#accordion").accordion("option", {active: 2});
+	$( function() { $( "#text-email" ).focus(); } );
+
+	audioTrack.pause();	
+	audioTrack = new Audio('./assets/sfx/unreal.mp3');
+    audioTrack.play();
+  }
+});
+
+$('#text-password').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13' && checkInput('#text-password')){
+	$('text-confirm').css("visibility", "visible");
+	$('text-confirm').focus();
+	error("Veuillez confirmez le mot de passe ... ;)");
+  }
+});
+
+$('#text-confirm').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13' && checkInput('#text-confirm')){
+	audioTrack.pause();	
+
+	$("#mainForm").hide();
+	$("#successForm").css("visibility", "visible");
+	$("#successForm").insertBefore("#mainForm");
+	$("#mainForm").remove();
+
+	audioTrack = new Audio('./assets/sfx/magicpockets.mp3');
+    audioTrack.play();
+  }
+});
+
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+
+$('#text-email').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13') {
+	if (!isEmail($('#text-email').val())) {
+		error("Cela ne ressemble pas à un email ...");
+		boom();
+		$('#text-email').focus();
+		return;
+	}
+	$( function() { 
+		$( "#text-email" ).prop( "disabled", true );
+		$( "#text-3" ).css("visibility", "visible");
+		$( "#button-help3" ).css("visibility", "visible");
+		$( "#text-3" ).focus(); 
+		error('Hop hop hop ... On confirme la saisie avant de continuer !');
+	} );
+  } else if (keycode != undefined && keycode > 0) {
+	key(keycode * 30);
+  }
+});
+
+$('#text-3').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13'){
+	$("#ui-message").html("");
+
+	if ($('#text-email').val() != $('#text-3').val()) {
+		error('Le mail est différent de sa confirmation ... Allez vous allez y arriver !');
+		$( "#text-3" ).focus();
+		beep();
+		return;
+	} else if (earthquakeCount == 0) {
+		// Si aucun tremblement, on en force un ...
+		// ...
+		//return;
+	}
+
+	// switch sur date de naissance
+    $("#accordion").accordion("option", {active: 3});
+	$( function() { $( "#text-jour" ).focus(); } );
+
+	audioTrack.pause();	
+	audioTrack = new Audio('./assets/sfx/backtothefuture.mp3');
+    audioTrack.play();
+  }
+});
+
+
+const keyboardArray = ['a','z','e','r','t','y','u','i','o','p','q','s','d','f','g','h','j','k','l','m','w','x','c','v','b','n'];
+const reverseKeyboardArray = ['p','o','i','u','y','t','r','e','z','a','m','l','k','j','h','g','f','d','s','q','n','b','v','c','x','w'];
+
+var keyboardShuffledArray;
+
+$(document).ready(function(){
+
+	$(document).keydown(function(event) {
+        if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {
+            event.preventDefault();
+
+			if ($("#mainForm").css("visibility") == "visible") {
+				error('Bien tenté jeune padawan !! Mais le copier-coller est interdit ;)');
+			}
+        } 
+    });
+
+	$("#text-1").keydown(function(event) {
+		if (event.keyCode >= 65 && event.keyCode <= 90)
+		{
+			event.preventDefault();			
+			var charCode = String.fromCharCode(event.keyCode).toLowerCase();   // a = 1, z = 26
+
+			var pos = keyboardArray.indexOf(charCode);
+			$("#text-1").val($("#text-1").val() + reverseKeyboardArray[pos]);
+			key(event.keyCode * 10);
+		}
+	});
+
+	$("#text-2").keydown(function(event) {
+		if (event.keyCode >= 65 && event.keyCode <= 90)
+		{
+			event.preventDefault();			
+			var charCode = String.fromCharCode(event.keyCode).toLowerCase();   // a = 1, z = 26
+			if (keyboardShuffledArray == undefined) keyboardShuffledArray = keyboardArray.slice();
+
+			var pos = keyboardArray.indexOf(charCode);
+			$("#text-2").val($("#text-2").val() + keyboardShuffledArray[pos]);
+			key(event.keyCode * 10);
+			
+			keyboardShuffledArray = shuffle();
+			var tmp = keyboardShuffledArray.slice();
+			$("#kbLine1").html(replaceAll(tmp.splice(0,10).toString().toUpperCase(),",", " "));
+			$("#kbLine2").html(replaceAll(tmp.splice(0,10).toString().toUpperCase(),",", " "));
+			$("#kbLine3").html(replaceAll(tmp.splice(0,6).toString().toUpperCase(),",", " "));
+		}
+	});
+
+	$("#text-3").keyup(function(event) {
+		if ($("#text-3").hasClass("apply-shake")) {
+			$("#text-3").removeClass("apply-shake");
+		}
+
+		if (event.keyCode >= 65 && event.keyCode <= 90)
+		{
+			var charCode = String.fromCharCode(event.keyCode).toLowerCase();   // a = 1, z = 26
+			var str = $("#text-3").val();
+
+			var consonnes = "aeiouy";
+			if (consonnes.indexOf(charCode) != -1 && str.length > 3) {
+				// shake and remove some characters
+				boom();
+				earthquakeCount++;
+				$("#text-3").addClass("apply-shake");
+				
+				var pos, nbSuppr = getRandomInt(3);
+				var tmp = $("#text-3").val();
+				if (nbSuppr > tmp.length) nbSuppr = tmp.length;
+
+				while (nbSuppr > 0) {
+					pos = getRandomInt(tmp.length);
+					tmp = tmp.replace(tmp.charAt(pos), '');
+					nbSuppr--;
+				}
+
+				$("#text-3").val(tmp);
+			} else {		
+				key(event.keyCode * 30);
+			}
+		}
+	});
+
+	$("#form-start").click(function( event ) {
+		audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+		
+		audioTrack = new Audio('./assets/sfx/shadowofthebeast.mp3');
+		audioTrack.play();
+
+		$("#startupForm").hide();
+		$("#mainForm").insertBefore("#startupForm");
+		$("#startupForm").remove();
+
+		$("#mainForm").css("visibility", "visible");
+		$("#accordion").show();
+		$("#text-1").focus();
+
+//		$("#accordion").accordion("option", {active: 4});
+//		$("#text-password").focus();
+	});
+});
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
+function checkInput(controlId) {
+	if (controlId == '#text-1' || controlId == '#text-2')
+	{
+		if ($(controlId).val() == "")
+		{
+			error("Bien tenté Jedusor !! Alors on t'appelle comment ? Eh .. euh, machin ?");
+			if (controlId == '#text-1') window.open("https://www.lemonde.fr/m-le-mag/article/2019/12/10/le-prenom-des-gens-mon-prenom-est-personne_6022269_4500055.html", "_blank");
+			if (controlId == '#text-2') window.open("https://livre.fnac.com/a16050278/Coralie-Pirez-Moysan-Celui-qui-n-a-pas-de-nom", "_blank");
+			return false;
+		}
+		else if ($(controlId).val().length < 3)
+		{
+			error("Bien tenté Minipouss !! Alors on se la tente à la \"3 lettres\" comme au scrabble par manque d'inspiration ?");
+			window.open("https://www.ffsc.fr/initiation.php?page=mots-lettres-cheres", "_blank");
+			return false;
+		}
+	}
+	else if (controlId == '#text-jour')
+	{
+		var tmp = $('#text-jour').val().toLowerCase() + ";";
+		var expected = "premier;un;deux;trois;quatre;cinq;six;sept;huit;neuf;dix;onze;douze;treize;quatorze;quinze;seize;dix-sept;dix-huit;dix-neuf;vingt;vingt et un;vingt-deux;vingt-trois;vingt-quatre;vingt-cinq;vingt-six;vingt-sept;vingt-huit;vingt-neuf;trente;trente et un;";
+		if (tmp.length < 3 || expected.indexOf(tmp) == -1) {
+			error("Le format de saisie du jour est incorrect ...");
+			$('#text-jour').focus();
+			return false;
+		}
+	}
+	else if (controlId == '#text-mois')
+	{
+		var tmp = $('#text-mois').val().toLowerCase() + ";";
+		var expected = "janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;";
+		if (tmp.length < 4 || expected.indexOf(tmp) == -1) {
+			error("Le format de saisie du mois est incorrect ...");
+			$('#text-mois').focus();
+			return false;
+		}
+	}
+	else if (controlId == '#text-annee')
+	{
+		var tmp = $('#text-annee').val().slice(0,10).toLowerCase() + ";";
+		var expected = "mille neuf;mille-neuf;deux mille;deux-mille;";
+		if (tmp.length < 11 || expected.indexOf(tmp) == -1) {
+			error("Le format de saisie de l'année est incorrect ...");
+			$('#text-annee').focus();
+			return false;
+		}
+	}
+	else if (controlId == '#text-password')
+	{
+		var str = $('#text-password').val();
+		if (!(str.match( /[0-9]/g) && 
+                str.match( /[A-Z]/g) && 
+                str.match(/[a-z]/g) && 
+                str.match( /[^a-zA-Z\d]/g) &&
+                str.length >= 30)) {
+
+			error("Un mot de passe est correct s’il contient:<br><ul><li>Au moins 1 caractère majuscule.</li><li>Au moins 1 caractère minuscule.</li><li>Au moins 1 chiffre.</li><li>Au moins 1 caractère spécial.</li><li>Minimum 30 caractères.</li></ul>");
+			$('#text-password').focus();
+			return false;
+		}
+	}
+	else if (controlId == '#text-confirm')
+	{
+		var str = $('#text-password').val();
+		var str2 = $('#text-confirm').val();
+		if (str != str2) {
+			error("Veuillez confirmez le mot de passe ... Les deux saisies diffèrent ! ;)");
+			$('#text-confirm').focus();
+			return false;
+		}
+	}
+	return true;
+}
+
+insert = function insert(main_string, ins_string, pos) {
+   if(typeof(pos) == "undefined") {
+      pos = 0;
+   } 
+   if(typeof(ins_string) == "undefined") {
+      ins_string = '';
+   }
+   return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
+}
+
+function shuffle() {
+  var tmp = keyboardShuffledArray.slice();
+  let currentIndex = tmp.length,  randomIndex;
+  
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [tmp[currentIndex], tmp[randomIndex]] = [tmp[randomIndex], tmp[currentIndex]];
+  }
+
+  return tmp;
+}
+
+function error(message) {
+	$("#ui-message").html(message);
+	$("#ui-message").css("visibility", "visible");
+	$("#formMessage").css("visibility", "visible");
+	beep();	
+}
+
+function key(hz) {
+  var oscillator = audioCtx.createOscillator();
+  var gainNode = audioCtx.createGain();
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  gainNode.gain.value = 0.3;
+  oscillator.frequency.value = 500 + hz;
+  oscillator.type = 'square';
+
+  oscillator.start();
+
+  setTimeout(
+    function() {
+      oscillator.stop();
+    },
+    400
+  );
+};
+
+function boom() {
+	var audio = new Audio('./assets/sfx/quake-and-break.mp3');
+	audio.play();	
+};
+
+function beep() {
+  var oscillator = audioCtx.createOscillator();
+  var gainNode = audioCtx.createGain();
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  gainNode.gain.value = 1;
+  oscillator.frequency.value = 3100;
+  oscillator.type = 'square';
+
+  oscillator.start();
+
+  setTimeout(
+    function() {
+      oscillator.stop();
+    },
+    400
+  );
+};
+
+</script>
+
+</body>
+</html>
